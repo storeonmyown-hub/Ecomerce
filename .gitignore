@@ -4,6 +4,7 @@
 /REPOSITORIO CAMISAS
 /public/images/*.png
 /public/products/**/*.png
+/public/logo/*.png
 /.next
 /out
 .env*
