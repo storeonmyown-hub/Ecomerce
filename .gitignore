@@ -1,0 +1,14 @@
+/node_modules
+/node_modules.incomplete
+/node_modules.remaining
+/REPOSITORIO CAMISAS
+/public/images/*.png
+/public/products/**/*.png
+/.next
+/out
+.env*
+!.env.example
+*.log
+*.tsbuildinfo
+.screenshots/
+.DS_Store
