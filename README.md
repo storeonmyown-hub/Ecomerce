@@ -1,5 +1,7 @@
 # ON MY OWN — E-commerce
 
+Demo en producción: https://on-my-own-store.vercel.app
+
 E-commerce editorial y responsive para **ON MY OWN**, construido con Next.js, React, TypeScript y Tailwind CSS. Incluye Home, catálogo de drops, fichas con galería, selectores de talla/color y contacto de compra por WhatsApp. No incluye pasarela de pagos, autenticación, backend ni base de datos.
 
 ## Requisitos

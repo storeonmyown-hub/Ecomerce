@@ -6,6 +6,7 @@
 /public/products/**/*.png
 /public/logo/*.png
 /.next
+/.vercel
 /out
 .env*
 !.env.example

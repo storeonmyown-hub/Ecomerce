@@ -34,6 +34,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
         </Link>
         <MobileMenu />
       </div>
+      <MobileMenu />
     </header>
   );
 }

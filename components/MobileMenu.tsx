@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const links = [
@@ -22,7 +22,7 @@ export function MobileMenu() {
   return (
     <div className="mobile-menu-wrap">
       <button className="icon-button mobile-trigger" onClick={() => setOpen(true)} aria-label="Abrir menú" aria-expanded={open}>
-        <Menu size={22} strokeWidth={1.4} />
+        <span className="menu-glyph" aria-hidden="true" />
       </button>
       <div className={`mobile-panel ${open ? "is-open" : ""}`} aria-hidden={!open}>
         <div className="mobile-panel-top">
