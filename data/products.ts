@@ -18,7 +18,7 @@ export interface Product {
   readonly dropNumber: number;
   readonly name: string;
   readonly category: ProductCategory;
-  readonly priceCop: number | null;
+  readonly priceCop: number | number;
   readonly description: string;
   readonly details: readonly string[];
   readonly colors: readonly string[];
@@ -155,6 +155,92 @@ export const products = [
       {
         src: "/products/drop-003/04-details.webp",
         alt: "Detalles del estampado, cuello y acabados de la camiseta Peruana Premium",
+      },
+    ],
+    available: true,
+  },
+  {
+    id: "drop-004",
+    slug: "drop-004-FALLEN",
+    dropNumber: 4,
+    name: "FALLEN",
+    category: "t-shirts",
+    priceCop: 90000,
+    description:
+      "Camiseta unisex de corte oversize en 100% algodón. Caer Tambien es parte del proceso, FALLEN representa esos momentos en los que el camino pesa, las certezas desaparecen y solo queda seguir por cuenta propia. Inspirado en la figura del ángel caído, este drop transforma la caída en símbolo de evolución, carácter y renacimiento.",
+    details: [
+      "100% algodón",
+      "Corte oversize",
+      "Elite Peruana",
+      "Estampado en DTF",
+      "Unisex",
+    ],
+    // La primera etiqueta de color está cortada en la guía y debe confirmarse.
+    colors: ["Blanco ", "Negro", "Rosado", "Verde Olivo", "Chocolate", "Azul Alicia", "Rojo vivo", "Blanco Hueso", "Arena"],
+    sizes: ["S", "M", "L", "XL"],
+    feedImage: {
+      src: "/products/drop-004/feed.webp",
+      alt: "Vista editorial del Drop 004 FALLEN con la camiseta FALLEN de frente y espalda",
+    },
+    images: [
+      {
+        src: "/products/drop-004/01-models.webp",
+        alt: "Modelos vistiendo la camiseta FALLEN de frente y espalda",
+      },
+      {
+        src: "/products/drop-004/02-product.webp",
+        alt: "Camiseta FALLEN aislada, vista frontal y posterior",
+      },
+      {
+        src: "/products/drop-004/03-size-guide.webp",
+        alt: "Guía de tallas, colores y especificaciones de la camiseta FALLEN",
+      },
+      {
+        src: "/products/drop-004/04-details.webp",
+        alt: "Detalles del estampado, costuras y acabados de la camiseta FALLEN",
+      },
+    ],
+    available: true,
+  },
+  {
+    id: "drop-005",
+    slug: "drop-005-blind-peace",
+    dropNumber: 5,
+    name: "BLIND PEACE",
+    category: "t-shirts",
+    priceCop: 90000,
+    description:
+      "Camiseta unisex de corte oversize en 100% algodón.BLIND PEACE representa la decisión de apartar la mirada del ruido, el caos y todo aquello que intenta alterar tu camino.",
+    details: [
+      "100% algodón",
+      "Corte oversize",
+      "Elite Peruana",
+      "Estampado en DTF",
+      "Unisex",
+    ],
+    // La primera etiqueta de color está cortada en la guía y debe confirmarse.
+    colors: ["Blanco ", "Azul Navy", "Negro", "Blanco Hueso", "Beige"],
+    sizes: ["S", "M", "L", "XL"],
+    feedImage: {
+      src: "/products/drop-005/feed.webp",
+      alt: "Vista editorial del Drop 005 BLIND PEACE con la camiseta BLIND PEACE de frente y espalda",
+    },
+    images: [
+      {
+        src: "/products/drop-005/01-models.webp",
+        alt: "Modelos vistiendo la camiseta BLIND PEACE de frente y espalda",
+      },
+      {
+        src: "/products/drop-005/02-product.webp",
+        alt: "Camiseta BLIND PEACE aislada, vista frontal y posterior",
+      },
+      {
+        src: "/products/drop-005/03-size-guide.webp",
+        alt: "Guía de tallas, colores y especificaciones de la camiseta BLIND PEACE",
+      },
+      {
+        src: "/products/drop-005/04-details.webp",
+        alt: "Detalles del estampado, costuras y acabados de la camiseta BLIND PEACE",
       },
     ],
     available: true,
