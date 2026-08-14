@@ -1,4 +1,5 @@
 import type { Product } from "@/data/products";
+import { formatCop } from "@/lib/currency";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,14 +9,8 @@ interface ProductCardProps {
   readonly priority?: boolean;
 }
 
-const copFormatter = new Intl.NumberFormat("es-CO", {
-  style: "currency",
-  currency: "COP",
-  maximumFractionDigits: 0,
-});
-
 function formatPrice(priceCop: number | null): string {
-  return priceCop === null ? "PRECIO POR CONFIRMAR" : copFormatter.format(priceCop);
+  return priceCop === null ? "PRECIO POR CONFIRMAR" : formatCop(priceCop);
 }
 
 export function ProductCard({ product, priority = false }: ProductCardProps) {

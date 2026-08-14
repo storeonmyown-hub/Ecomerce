@@ -1,28 +1,26 @@
 "use client";
 
 import type { Product } from "@/data/products";
+import { formatCop } from "@/lib/currency";
+import { ShoppingBag } from "lucide-react";
 import { useState } from "react";
+import { useCart } from "./CartProvider";
 import { ColorSelector } from "./ColorSelector";
 import { SizeSelector } from "./SizeSelector";
-import { WhatsAppButton } from "./WhatsAppButton";
 
 interface ProductPurchasePanelProps {
   readonly product: Product;
 }
 
-const copFormatter = new Intl.NumberFormat("es-CO", {
-  style: "currency",
-  currency: "COP",
-  maximumFractionDigits: 0,
-});
-
 function formatPrice(priceCop: number | null): string {
-  return priceCop === null ? "PRECIO POR CONFIRMAR" : copFormatter.format(priceCop);
+  return priceCop === null ? "PRECIO POR CONFIRMAR" : formatCop(priceCop);
 }
 
 export function ProductPurchasePanel({ product }: ProductPurchasePanelProps) {
+  const { addItem } = useCart();
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
+  const [feedback, setFeedback] = useState("");
   const hasRequiredSelection = Boolean(selectedColor && selectedSize);
   const selectorsDisabled = !product.available;
   const orderDisabled = selectorsDisabled || !hasRequiredSelection;
@@ -60,7 +58,20 @@ export function ProductPurchasePanel({ product }: ProductPurchasePanelProps) {
 
       <form
         className="product-purchase-form"
-        onSubmit={(event) => event.preventDefault()}
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (orderDisabled || product.priceCop === null) return;
+          addItem({
+            productId: product.id,
+            productName: product.name,
+            slug: product.slug,
+            image: product.feedImage.src,
+            color: selectedColor,
+            size: selectedSize,
+            priceCop: product.priceCop,
+          });
+          setFeedback("Prenda agregada al carrito.");
+        }}
       >
         <ColorSelector
           colors={product.colors}
@@ -74,14 +85,18 @@ export function ProductPurchasePanel({ product }: ProductPurchasePanelProps) {
           onChange={setSelectedSize}
           disabled={selectorsDisabled}
         />
-        <WhatsAppButton
-          productName={product.name}
-          color={selectedColor}
-          size={selectedSize}
-          priceCop={product.priceCop}
+        <button
+          className={`product-whatsapp-button${orderDisabled ? " product-whatsapp-button--disabled" : ""}`}
+          type="submit"
           disabled={orderDisabled}
-          disabledReason={disabledReason}
-        />
+          aria-describedby="purchase-feedback"
+        >
+          <ShoppingBag size={19} strokeWidth={1.5} aria-hidden="true" />
+          AGREGAR AL CARRITO
+        </button>
+        <p className="product-whatsapp-feedback" id="purchase-feedback" role="status" aria-live="polite">
+          {feedback || (orderDisabled ? disabledReason : "Puedes agregar varias prendas antes de finalizar.")}
+        </p>
       </form>
 
       <div className="product-information">

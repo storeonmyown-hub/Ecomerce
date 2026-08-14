@@ -35,7 +35,7 @@ export const products = [
     dropNumber: 1,
     name: "Different Minds",
     category: "t-shirts",
-    priceCop: null,
+    priceCop: 90000,
     description:
       "Camiseta unisex de corte oversize en 100% algodón, con efecto acid wash y estampado en serigrafía.",
     details: [
@@ -78,7 +78,7 @@ export const products = [
     dropNumber: 2,
     name: "Acid Wash OV",
     category: "t-shirts",
-    priceCop: null,
+    priceCop: 90000,
     description:
       "Camisilla unisex sin mangas de corte oversize, confeccionada en algodón nacional de 220 g con efecto acid wash.",
     details: [
@@ -121,7 +121,7 @@ export const products = [
     dropNumber: 3,
     name: "Peruana Premium",
     category: "t-shirts",
-    priceCop: null,
+    priceCop: 90000,
     description:
       "Camiseta oversize en algodón peruano de 310 g, con tejido reactivo siliconado, tratamiento antipilling y costuras reforzadas.",
     details: [

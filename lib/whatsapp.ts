@@ -5,6 +5,10 @@ export interface WhatsAppOrderDetails {
   readonly priceCop: number | null;
 }
 
+export interface WhatsAppCartItem extends WhatsAppOrderDetails {
+  readonly quantity: number;
+}
+
 const copFormatter = new Intl.NumberFormat("es-CO", {
   maximumFractionDigits: 0,
   useGrouping: true,
@@ -72,5 +76,48 @@ export function buildWhatsAppUrl(
     return null;
   }
 
+  return `https://wa.me/${normalizedNumber}?text=${encodeURIComponent(message)}`;
+}
+
+export function buildCartWhatsAppMessage(
+  items: readonly WhatsAppCartItem[],
+): string | null {
+  if (items.length === 0) return null;
+
+  const normalizedItems = items.map((item) => ({
+    ...item,
+    productName: normalizeRequiredText(item.productName),
+    color: normalizeRequiredText(item.color),
+    size: normalizeRequiredText(item.size),
+  }));
+
+  if (normalizedItems.some((item) =>
+    !item.productName || !item.color || !item.size ||
+    !Number.isSafeInteger(item.quantity) || item.quantity < 1,
+  )) return null;
+
+  const lines = normalizedItems.flatMap((item, index) => [
+    `${index + 1}. ${item.productName}`,
+    `   Color: ${item.color} | Talla: ${item.size}`,
+    `   Cantidad: ${item.quantity} | Precio unitario: ${formatPriceForMessage(item.priceCop)}`,
+  ]);
+  const total = normalizedItems.reduce(
+    (sum, item) => sum + (item.priceCop ?? 0) * item.quantity,
+    0,
+  );
+
+  return [
+    "Hola 👋", "", "Quiero realizar este pedido de ON MY OWN:", "",
+    ...lines, "", `Total: ${formatPriceForMessage(total)}`, "", "¿Está disponible?",
+  ].join("\n");
+}
+
+export function buildCartWhatsAppUrl(
+  phoneNumber: string | null | undefined,
+  items: readonly WhatsAppCartItem[],
+): string | null {
+  const normalizedNumber = normalizeWhatsAppNumber(phoneNumber);
+  const message = buildCartWhatsAppMessage(items);
+  if (!normalizedNumber || !message) return null;
   return `https://wa.me/${normalizedNumber}?text=${encodeURIComponent(message)}`;
 }

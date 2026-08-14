@@ -4,6 +4,7 @@ import { Search } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BrandMark } from "./BrandMark";
+import { CartButton } from "./CartButton";
 import { MobileMenu } from "./MobileMenu";
 
 const links = [
@@ -32,7 +33,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
         <Link href="/shop" className="icon-button search-button" aria-label="Explorar catálogo">
           <Search size={20} strokeWidth={1.4} />
         </Link>
-        <MobileMenu />
+        <CartButton />
       </div>
       <MobileMenu />
     </header>
