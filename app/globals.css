@@ -280,7 +280,7 @@ footer { border-top: 1px solid var(--line); }
   .brand-name--compact { font-size: .85rem; }
   .search-button { display: none; }
   .hero { min-height: 46rem; height: 100svh; align-items: end; padding-bottom: 5rem; }
-  .hero-image { object-position: 62% center; }
+  .hero-image { object-position: 84% center; }
   .hero-shade { background: linear-gradient(0deg, rgba(0,0,0,.91) 4%, rgba(0,0,0,.1) 72%), linear-gradient(90deg, rgba(0,0,0,.32), transparent); }
   .hero-content { width: auto; margin: 0 var(--page-x); padding: 0; }
   .hero-content .eyebrow { margin-bottom: 1.2rem; }
