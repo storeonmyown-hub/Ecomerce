@@ -1,0 +1,14 @@
+node_modules
+node_modules.incomplete
+node_modules.remaining
+.next
+.git
+.vercel
+.screenshots
+REPOSITORIO CAMISAS
+*.log
+*.tsbuildinfo
+AGENTS.md
+CLAUDE.md
+public/images/*.png
+public/products/**/*.png
